@@ -5,18 +5,18 @@
 ### 1. Clone the repository and navigate to the project folder:
 
 ```bash
-git clone https://github.com/your-username/ahrefs-scraper.git
-cd ahrefs-scraper
+git clone https://github.com/nahomwg/AhrefsDataScraper.git
+cd AhrefsDataScraper
 ```
 ### 2.Install the required dependencies:
 ```
 npm install
 ```
-This project uses:
+#### This project uses:
 
--puppeteer-real-browser
+##### -puppeteer-real-browser
 
--puppeteer-extra-plugin-stealth
+##### -puppeteer-extra-plugin-stealth
 
 ## ▶️ Running the Script
 ```
