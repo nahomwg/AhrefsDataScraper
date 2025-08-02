@@ -1,0 +1,26 @@
+[
+  {
+    "domain": "notion.so",
+    "domain_rating": 0,
+    "backlinks": 19000000,
+    "linking_websites": 107000,
+    "backlinks_dofollow_percentage": 95,
+    "linking_websites_dofollow_percentage": 82
+  },
+  {
+    "domain": "webflow.com",
+    "domain_rating": 0,
+    "backlinks": 16000000,
+    "linking_websites": 137000,
+    "backlinks_dofollow_percentage": 98,
+    "linking_websites_dofollow_percentage": 89
+  },
+  {
+    "domain": "linear.app",
+    "domain_rating": 0,
+    "backlinks": 61000,
+    "linking_websites": 4600,
+    "backlinks_dofollow_percentage": 80,
+    "linking_websites_dofollow_percentage": 83
+  }
+]
