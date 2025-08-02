@@ -91,11 +91,13 @@ async function scrapeDomain(page, domain) {
   };
 
   const metrics = await getMetricValues();
-  const valueSelector =
-    "span.css-vemh4e.css-rr08kv-textFontWeight.css-oi9nct-textDisplay.css-1x5n6ob";
+
   const result = {
     domain,
-    domain_rating: await getText(valueSelector),
+    domain_rating: parseNumber(
+      await page.$eval("span.css-vemh4e", (el) => el.textContent)
+    ),
+    //domain_rating: parseNumber(await getText("span.css-vemh4e")),
     backlinks: parseNumber(metrics.backlinks),
     linking_websites: parseNumber(metrics.linking_websites),
     backlinks_dofollow_percentage: parsePercentage(metrics.backlinks_dofollow),

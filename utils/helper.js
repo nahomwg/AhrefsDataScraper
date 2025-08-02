@@ -10,6 +10,7 @@ const parsePercentage = (text) => {
   const match = text.match(/(\d+)%/);
   return match ? parseInt(match[1]) : 0;
 };
+
 const getText = async (selector) => {
   try {
     return await page.$eval(selector, (el) => el.textContent.trim());
