@@ -1,8 +1,9 @@
-const { parseNumber, parsePercentage, getText } = require("../utils/helper");
+const { parseNumber, parsePercentage, getTextContent } = require("../utils/helper");
 
 async function scrapeDomain(page, domain) {
   console.log(`Scraping: ${domain}`);
 
+  // Navigate to Ahrefs Backlink Checker
   await page.goto("https://ahrefs.com/backlink-checker", {
     waitUntil: "load",
     timeout: 60000,
@@ -11,7 +12,7 @@ async function scrapeDomain(page, domain) {
   const inputSelector = 'input[placeholder="Enter domain or URL"]';
   await page.waitForSelector(inputSelector, { visible: true });
 
-  // Type domain and press Enter
+  // Type the domain into the input box and press Enter
   await page.type(inputSelector, domain, { delay: 100 });
   await new Promise((res) => setTimeout(res, 500));
   await page.keyboard.press("Enter");
@@ -19,6 +20,7 @@ async function scrapeDomain(page, domain) {
   console.log("Waiting for modal/results to appear...");
   await new Promise((res) => setTimeout(res, 15000));
 
+  // Wait for the modal content to appear (Domain Rating element)
   try {
     await page.waitForSelector("span.css-vemh4e", { timeout: 30000 });
   } catch (error) {
@@ -38,6 +40,7 @@ async function scrapeDomain(page, domain) {
           linking_websites_dofollow: "",
         };
 
+        // All metric blocks live inside these parent divs
         // Find all sections that contain metrics
         const sections = document.querySelectorAll(".css-2qi252");
 
@@ -90,14 +93,13 @@ async function scrapeDomain(page, domain) {
     }
   };
 
+  // Collect metrics from page
   const metrics = await getMetricValues();
 
+  // Build final result object with parsing helpers
   const result = {
     domain,
-    domain_rating: parseNumber(
-      await page.$eval("span.css-vemh4e", (el) => el.textContent)
-    ),
-    //domain_rating: parseNumber(await getText("span.css-vemh4e")),
+    domain_rating: parseNumber(await getTextContent(page, "span.css-vemh4e")),
     backlinks: parseNumber(metrics.backlinks),
     linking_websites: parseNumber(metrics.linking_websites),
     backlinks_dofollow_percentage: parsePercentage(metrics.backlinks_dofollow),
@@ -115,7 +117,7 @@ async function scrapeDomain(page, domain) {
     parsed: result,
   });
 
-  // Close modal
+  // Close modal for the next domain scrape
   try {
     const closeSelector = "button.css-190195q-closeButton";
     await page.waitForSelector(closeSelector, {

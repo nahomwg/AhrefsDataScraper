@@ -11,15 +11,19 @@ const parsePercentage = (text) => {
   return match ? parseInt(match[1]) : 0;
 };
 
-const getText = async (selector) => {
+const getTextContent = async (page, selector) => {
   try {
     return await page.$eval(selector, (el) => el.textContent.trim());
-  } catch {
+  } catch (err) {
+    console.error(
+      `Error getting text content for selector "${selector}":`,
+      err
+    );
     return "";
   }
 };
 module.exports = {
   parseNumber,
   parsePercentage,
-  getText,
+  getTextContent,
 };
