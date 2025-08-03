@@ -1,4 +1,4 @@
-# Ahrefs Backlink Checker Scraper
+# Ahrefs Backlink Checker Data Scraper
 
 ## 🛠️ Installation
 
@@ -15,8 +15,15 @@ npm install
 #### This project uses:
 
 ##### -puppeteer-real-browser
+```
+npm i puppeteer-real-browser
+```
 
 ##### -puppeteer-extra-plugin-stealth
+
+```
+npm i puppeteer-extra-plugin-stealth
+```
 
 ### 3.Running the Script
 ```
