@@ -1,4 +1,4 @@
-# Ahrefs Backlink Checker Scraper
+# Ahrefs Backlink Checker Data Scraper
 
 ## 🛠️ Installation
 
@@ -15,14 +15,21 @@ npm install
 #### This project uses:
 
 ##### -puppeteer-real-browser
+```
+npm i puppeteer-real-browser
+```
 
 ##### -puppeteer-extra-plugin-stealth
 
-## ▶️ Running the Script
+```
+npm i puppeteer-extra-plugin-stealth
+```
+
+### 3.Running the Script
 ```
 node scraper.js
 ```
-## 🧠 Approach & Design Decisions
+## Approach & Design Decisions
 Automation Framework: Used puppeteer-real-browser to simulate a real user browser with stealth capabilities.
 
 CAPTCHA Handling: Instead of using a CAPTCHA-solving service, we used browser fingerprinting evasion (puppeteer-extra-plugin-stealth) and human-like interaction to trigger and solve Cloudflare Turnstile manually.
