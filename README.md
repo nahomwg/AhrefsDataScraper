@@ -18,11 +18,11 @@ npm install
 
 ##### -puppeteer-extra-plugin-stealth
 
-## ▶️ Running the Script
+### 3.Running the Script
 ```
 node scraper.js
 ```
-## 🧠 Approach & Design Decisions
+## Approach & Design Decisions
 Automation Framework: Used puppeteer-real-browser to simulate a real user browser with stealth capabilities.
 
 CAPTCHA Handling: Instead of using a CAPTCHA-solving service, we used browser fingerprinting evasion (puppeteer-extra-plugin-stealth) and human-like interaction to trigger and solve Cloudflare Turnstile manually.
